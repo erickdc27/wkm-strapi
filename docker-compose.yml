@@ -1,0 +1,13 @@
+version: '3.1'
+ 
+services:   
+  strapi_api:     
+    container_name: strapi_api
+    hostname: strapi_api    
+    image: postgres  
+    restart: always   
+    environment:       
+      POSTGRES_PASSWORD: 1720
+      POSTGRES_DB: strapi
+    ports:  
+      - '5432:5432'
