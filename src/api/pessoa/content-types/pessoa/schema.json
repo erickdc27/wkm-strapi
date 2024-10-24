@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pessoas",
+  "info": {
+    "singularName": "pessoa",
+    "pluralName": "pessoas",
+    "displayName": "pessoa",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 250
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "pessoa_city": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cidade.cidade"
+    },
+    "pessoa_uf": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::estado.estado"
+    }
+  }
+}
