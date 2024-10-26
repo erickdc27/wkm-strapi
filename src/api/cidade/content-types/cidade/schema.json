@@ -12,15 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name_city": {
+    "nome": {
       "type": "string",
       "required": true
     },
-    "citys_uf": {
+    "estado": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::estado.estado",
-      "inversedBy": "uf"
+      "inversedBy": "cidades"
     }
   }
 }

@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "nome": {
       "type": "string",
       "required": true,
       "maxLength": 250
@@ -22,12 +22,12 @@
       "required": true,
       "unique": true
     },
-    "pessoa_city": {
+    "cidade": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::cidade.cidade"
     },
-    "pessoa_uf": {
+    "estado": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::estado.estado"

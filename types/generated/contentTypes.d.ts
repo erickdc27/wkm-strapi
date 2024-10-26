@@ -381,17 +381,17 @@ export interface ApiCidadeCidade extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    citys_uf: Schema.Attribute.Relation<'manyToOne', 'api::estado.estado'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    estado: Schema.Attribute.Relation<'manyToOne', 'api::estado.estado'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::cidade.cidade'
     > &
       Schema.Attribute.Private;
-    name_city: Schema.Attribute.String & Schema.Attribute.Required;
+    nome: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -411,6 +411,7 @@ export interface ApiEstadoEstado extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    cidades: Schema.Attribute.Relation<'oneToMany', 'api::cidade.cidade'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -420,9 +421,8 @@ export interface ApiEstadoEstado extends Struct.CollectionTypeSchema {
       'api::estado.estado'
     > &
       Schema.Attribute.Private;
-    name_uf: Schema.Attribute.String & Schema.Attribute.Required;
+    nome: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    uf: Schema.Attribute.Relation<'oneToMany', 'api::cidade.cidade'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -441,25 +441,25 @@ export interface ApiPessoaPessoa extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    cidade: Schema.Attribute.Relation<'oneToOne', 'api::cidade.cidade'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    estado: Schema.Attribute.Relation<'oneToOne', 'api::estado.estado'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::pessoa.pessoa'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String &
+    nome: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 250;
       }>;
-    pessoa_city: Schema.Attribute.Relation<'oneToOne', 'api::cidade.cidade'>;
-    pessoa_uf: Schema.Attribute.Relation<'oneToOne', 'api::estado.estado'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
